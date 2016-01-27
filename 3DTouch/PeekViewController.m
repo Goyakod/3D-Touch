@@ -14,6 +14,7 @@
 
 @implementation PeekViewController
 
+//初始化preViewActionsItems
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems
 {
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"action1" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
@@ -49,7 +50,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back:)];
+    tap.numberOfTouchesRequired = 1;
+    tap.numberOfTapsRequired = 1;
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 200, self.view.frame.size.width-200, 50)];
+    label.text = self.sendData;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:25.0];
+    label.userInteractionEnabled = YES;
+    [label addGestureRecognizer:tap];
+    [self.view addSubview:label];
+}
+
+#pragma mark - back method
+- (void)back:(UITapGestureRecognizer *)tap
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

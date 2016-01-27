@@ -7,11 +7,13 @@
 //
 
 #import "ViewController.h"
-#import "SecondViewController.h"
-#import "PeekViewController.h"
-#import "PopViewController.h"
 
-@interface ViewController ()
+#import "PeekViewController.h"
+
+@interface ViewController (){
+    
+    NSMutableArray *_dataSource;
+}
 
 @end
 
@@ -36,7 +38,7 @@
 {
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
         //可用的情况下注册
-        [self registerForPreviewingWithDelegate:self sourceView:self.label];
+        [self registerForPreviewingWithDelegate:self sourceView:self.tableView];
         
         NSLog(@"已注册");
     }else{
@@ -55,14 +57,23 @@
 //    }
 //}
 
-#pragma mark - 3D Touch delegate
+#pragma mark - viewcontrollerPrewingdelegate
 //Peek 代理方法：
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
 {
     if ([self.presentationController isKindOfClass:[PeekViewController class]]) {
         return nil;
     }else{
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (!cell) {
+            return nil;
+        }
+        
+        previewingContext.sourceRect = cell.frame;
         PeekViewController *peekVC = [[PeekViewController alloc] initWithNibName:@"PeekViewController" bundle:nil];
+        peekVC.preferredContentSize = CGSizeMake(0, 0);
+        
         return peekVC;
     }
 }
@@ -70,33 +81,50 @@
 //Pop 代理方法：
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
 {
-    PopViewController *popVC = [[PopViewController alloc] initWithNibName:@"PopViewController" bundle:nil];
-    [self showViewController:popVC sender:self];
+    PeekViewController *peekVC = [[PeekViewController alloc] initWithNibName:@"PeekViewController" bundle:nil];
+    peekVC.sendData = @"from POP";
+    [self presentViewController:peekVC animated:YES completion:nil];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 50)];
-    self.label.text = @"Peek And Pop";
-    self.label.textAlignment = NSTextAlignmentCenter;
-    self.label.backgroundColor = [UIColor colorWithRed:137.0/255.0 green:137.0/255.0 blue:137.0/255.0 alpha:1.0];
-    self.label.font = [UIFont systemFontOfSize:20.0];
+    _dataSource = [NSMutableArray array];
+    for (int i = 0; i < 20; i ++) {
+        NSString *tmp = [NSString stringWithFormat:@"我是数据项%d",i];
+        [_dataSource addObject:tmp];
+    }
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 200, self.view.frame.size.width, 50);
-    button.backgroundColor = [UIColor colorWithRed:137.0/255.0 green:137.0/255.0 blue:137.0/255.0 alpha:1.0];
-    [button setTitle:@"Button" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchUpInside];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
-    [self.view addSubview:button];
-    [self.view addSubview:self.label];
+    [self.view addSubview:self.tableView];
 }
 
-- (void)buttonPress:(UIButton *)button
+#pragma mark tableView delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    SecondViewController *secondVC = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
-    [self presentViewController:secondVC animated:YES completion:nil];
+    return _dataSource.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    cell.textLabel.text = [_dataSource objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PeekViewController *peekVC = [[PeekViewController alloc] initWithNibName:@"PeekViewController" bundle:nil];
+    peekVC.sendData = [_dataSource objectAtIndex:indexPath.row];
+    [self presentViewController:peekVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

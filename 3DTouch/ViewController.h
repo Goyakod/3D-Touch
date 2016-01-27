@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UIViewControllerPreviewingDelegate>
+@interface ViewController : UIViewController <UIViewControllerPreviewingDelegate,UITableViewDataSource,UITableViewDelegate>
 
-
-@property (nonatomic,strong) UILabel *label;
+@property (nonatomic,strong) UITableView *tableView;
 
 @end
 

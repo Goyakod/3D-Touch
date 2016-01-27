@@ -15,12 +15,8 @@
 		C879030E1C49116900B675ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C879030C1C49116900B675ED /* LaunchScreen.storyboard */; };
 		C87903191C49116900B675ED /* _DTouchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C87903181C49116900B675ED /* _DTouchTests.m */; };
 		C87903241C49116900B675ED /* _DTouchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C87903231C49116900B675ED /* _DTouchUITests.m */; };
-		C8EFDFDF1C4CE5E60005E4B0 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EFDFDD1C4CE5E60005E4B0 /* SecondViewController.m */; };
-		C8EFDFE01C4CE5E60005E4B0 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8EFDFDE1C4CE5E60005E4B0 /* SecondViewController.xib */; };
 		C8EFDFE41C4CE9AB0005E4B0 /* PeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EFDFE21C4CE9AB0005E4B0 /* PeekViewController.m */; };
 		C8EFDFE51C4CE9AB0005E4B0 /* PeekViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8EFDFE31C4CE9AB0005E4B0 /* PeekViewController.xib */; };
-		C8EFDFE91C4CEF380005E4B0 /* PopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EFDFE71C4CEF380005E4B0 /* PopViewController.m */; };
-		C8EFDFEA1C4CEF380005E4B0 /* PopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8EFDFE81C4CEF380005E4B0 /* PopViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,15 +53,9 @@
 		C879031F1C49116900B675ED /* 3DTouchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3DTouchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C87903231C49116900B675ED /* _DTouchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _DTouchUITests.m; sourceTree = "<group>"; };
 		C87903251C49116900B675ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8EFDFDC1C4CE5E60005E4B0 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C8EFDFDD1C4CE5E60005E4B0 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		C8EFDFDE1C4CE5E60005E4B0 /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		C8EFDFE11C4CE9AB0005E4B0 /* PeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeekViewController.h; sourceTree = "<group>"; };
 		C8EFDFE21C4CE9AB0005E4B0 /* PeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeekViewController.m; sourceTree = "<group>"; };
 		C8EFDFE31C4CE9AB0005E4B0 /* PeekViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeekViewController.xib; sourceTree = "<group>"; };
-		C8EFDFE61C4CEF380005E4B0 /* PopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewController.h; sourceTree = "<group>"; };
-		C8EFDFE71C4CEF380005E4B0 /* PopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopViewController.m; sourceTree = "<group>"; };
-		C8EFDFE81C4CEF380005E4B0 /* PopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,15 +115,9 @@
 				C879030C1C49116900B675ED /* LaunchScreen.storyboard */,
 				C879030F1C49116900B675ED /* Info.plist */,
 				C87902FE1C49116900B675ED /* Supporting Files */,
-				C8EFDFDC1C4CE5E60005E4B0 /* SecondViewController.h */,
-				C8EFDFDD1C4CE5E60005E4B0 /* SecondViewController.m */,
-				C8EFDFDE1C4CE5E60005E4B0 /* SecondViewController.xib */,
 				C8EFDFE11C4CE9AB0005E4B0 /* PeekViewController.h */,
 				C8EFDFE21C4CE9AB0005E4B0 /* PeekViewController.m */,
 				C8EFDFE31C4CE9AB0005E4B0 /* PeekViewController.xib */,
-				C8EFDFE61C4CEF380005E4B0 /* PopViewController.h */,
-				C8EFDFE71C4CEF380005E4B0 /* PopViewController.m */,
-				C8EFDFE81C4CEF380005E4B0 /* PopViewController.xib */,
 			);
 			path = 3DTouch;
 			sourceTree = "<group>";
@@ -268,8 +252,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8EFDFEA1C4CEF380005E4B0 /* PopViewController.xib in Resources */,
-				C8EFDFE01C4CE5E60005E4B0 /* SecondViewController.xib in Resources */,
 				C879030E1C49116900B675ED /* LaunchScreen.storyboard in Resources */,
 				C879030B1C49116900B675ED /* Assets.xcassets in Resources */,
 				C8EFDFE51C4CE9AB0005E4B0 /* PeekViewController.xib in Resources */,
@@ -298,8 +280,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8EFDFE91C4CEF380005E4B0 /* PopViewController.m in Sources */,
-				C8EFDFDF1C4CE5E60005E4B0 /* SecondViewController.m in Sources */,
 				C87903061C49116900B675ED /* ViewController.m in Sources */,
 				C8EFDFE41C4CE9AB0005E4B0 /* PeekViewController.m in Sources */,
 				C87903031C49116900B675ED /* AppDelegate.m in Sources */,
