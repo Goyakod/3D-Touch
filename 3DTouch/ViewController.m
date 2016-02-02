@@ -39,7 +39,6 @@
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
         //可用的情况下注册
         [self registerForPreviewingWithDelegate:self sourceView:self.tableView];
-        
         NSLog(@"已注册");
     }else{
         NSLog(@"没注册");
@@ -61,15 +60,16 @@
 //Peek 代理方法：
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
 {
+    //防止重复弹出
     if ([self.presentationController isKindOfClass:[PeekViewController class]]) {
         return nil;
     }else{
+        //找到正在按压的cell，从而着重显示，
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         if (!cell) {
             return nil;
         }
-        
         previewingContext.sourceRect = cell.frame;
         PeekViewController *peekVC = [[PeekViewController alloc] initWithNibName:@"PeekViewController" bundle:nil];
         peekVC.preferredContentSize = CGSizeMake(0, 0);
@@ -77,7 +77,6 @@
         return peekVC;
     }
 }
-
 //Pop 代理方法：
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
 {
